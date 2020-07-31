@@ -1,0 +1,1 @@
+CALL `udpt`.`SP_CREATE_USER`('a',1, 'abc', '123456', '123456789','test', 'abc123');
