@@ -1,0 +1,76 @@
+html * {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.header-buttons {
+    width: 0;
+    float: right;
+    position: relative;
+    text-align: right;
+}
+.corral {
+    margin: auto;
+    width: 460px;
+    position: relative;
+}
+.content {
+    margin: 120px auto 0;
+    padding:  42px 42px 36px;
+    border: 1px solid #cbd2d6;
+    overflow: hidden;
+}
+.login-signup-separator {
+    border-top: 1px solid #cbd2d6;
+    position: relative;
+    margin: 25px 0 10px;
+    text-align: center;
+}
+.login-signup-separator .text-in-separator {
+    background-color: white;
+    padding: 0 .5em;
+    position: relative;
+    color: #6c7378;
+    top: -.7em;
+}
+#password-field-wrapper {
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.signup-wrapper .corral {
+    margin: auto;
+    width: 560px;
+    position: relative;
+}
+.signup-content {
+    margin: 80px auto 0;
+    padding:  42px 42px 36px;
+    overflow: hidden;
+}
+.form-control {
+    height: 52px !important;
+}
+.form-error {
+    border: solid 1px red;
+    border-radius: 5px;
+    display: none;
+    margin-bottom: 20px;
+}
+.form-error .fas {
+    color: yellowgreen;
+    padding: 15px 0 15px 30px;
+}
+.show-hide-password {
+    border: 0;
+    background-color: white;
+}
+#password-field-wrapper {
+    padding: 0;
+}
+#password-field-wrapper .row {
+    margin: 0 0 0 0;
+    height: 100%;
+    width: 100%;
+}
+#login-info-wrong .fas {
+    padding: 15px 0 15px 15px;
+}
