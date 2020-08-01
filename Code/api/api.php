@@ -2,6 +2,7 @@
     require_once 'config/database.php';
     require_once 'controllers/authenticationController.php';
     require_once 'controllers/userController.php';
+    require_once 'controllers/sessionController.php';
 
     header("Access-Control-Allow-Origin: *");
     header("Content-Type: application/json; charset=UTF-8");
@@ -22,37 +23,47 @@
     
     $db = (new DatabaseConnector())->getConnection();
 
+    // Check if data is sent throught JSON or URI
+    $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+    if($query)
+    {
+        $query = explode('&', $query);
+        $data = [];
+        foreach ($query as $key => $value) {
+            $row = explode('=', $value);
+            $data[$row[0]] = $row[1];
+        }
+    }
+    else
+    {
+        $json = file_get_contents("php://input");
+        if($json)
+        {
+            $data = get_object_vars(json_decode($json));
+        }
+        else
+        {
+            header('HTTP/1.1 400 Bad Request');
+            exit();
+        }
+    }
+    
     switch ($uri[3])
     {
         case 'auth':
-            $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
-            $query = explode('&', $query);
-
-            $username = explode('=', $query[0]);
-            $password = explode('=', $query[1]);
-            $ipAdress = explode('=', $query[2]);
-
-            $controller = new AuthenticationController($db, $requestMethod, $username[1], $password[1], $ipAdress[1]);
+            $controller = new AuthenticationController($db, $requestMethod, $data);
             $controller->processRequest();
             break;
         case 'user':
-            $data = file_get_contents("php://input");
-            $userObject = json_decode($data);
-
-            $controller = new UserController($db, $requestMethod, $userObject);
+            $controller = new UserController($db, $requestMethod, $data);
             $controller->processRequest();
             break;
         case 'session':
-            $data = file_get_contents("php://input");
-            $sessionObject = json_decode($data);
-
-            print_r($sessionObject);
-
+            $controller = new SessionController($db, $requestMethod, $data);
+            $controller->processRequest();
             break;
         default:
             header("HTTP/1.1 404 Not Found");
             exit();
     }
-
-    
 ?>
