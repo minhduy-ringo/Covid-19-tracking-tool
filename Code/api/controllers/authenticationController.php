@@ -4,17 +4,13 @@
     class AuthenticationController {
         private $db;
         private $requestMethod;
-        private $username;
-        private $password;
-        private $ipAdress;
+        private $data;
         
-        public function __construct($db, $requestMethod, $username, $password, $ipAdress)
+        public function __construct($db, $requestMethod, $data)
         {
             $this->db = $db;
             $this->requestMethod = $requestMethod;
-            $this->username = $username;
-            $this->password = $password;
-            $this->ipAdress = $ipAdress;
+            $this->data = $data;
             $this->db = new Authentication($db);
         }
 
@@ -36,7 +32,10 @@
 
         private function loginAuthentication()
         {
-            $result = $this->db->login($this->username, $this->password, $this->ipAdress);
+            $result = $this->db->login(
+                        $this->data['username'], 
+                        $this->data['password'], 
+                        $this->data['ipaddress']);
             $response['body'] = json_encode($result);
             if(array_key_exists('ERROR', $result))
             {
