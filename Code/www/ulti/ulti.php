@@ -64,6 +64,10 @@
      * 
      *          Ex: auth / session
      * @param   array   $data
+     * 
+     * @return  array   <code> array (
+     *  'code'  =>  http response code
+     *  'data'  =>  data array); <code>
      */
     function callApi($method, $endpoint, $data)
     {
