@@ -1,12 +1,14 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'] . "www/ulti/ulti.php";
 
+    httpsRedirect();
+
     if(isset($_COOKIE['sessionId']))
     {
-        $result = checkSession();
+        $result = checkSession($_COOKIE['sessionId']);
         if($result)
         {
-            $redirect = "https://" . $GLOBALS['domain_url'] . "home.php";
+            $redirect = $GLOBALS['domain_url'] . "home.php";
             header("Location: $redirect");
         }
     }
