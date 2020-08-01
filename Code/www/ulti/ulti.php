@@ -38,7 +38,7 @@
         
         // Session expire after 1 hour
         date_default_timezone_set('Asia/Ho_Chi_Minh');
-        $_SESSION['expire'] = date("Y/m/d H:i:s", time() + (60 * 60));
+        $_SESSION['expire'] = time() + (60 * 60);
         
         // New session does not need them
         unset($_SESSION['destroyed']);
@@ -47,9 +47,14 @@
     /**
      * 
      */
-    function checkSession()
+    function checkSession($sessionId)
     {
+        $response = callApi('GET', 'session', ['sessionid' => $sessionId]);
 
+        if($response['code'] == '200')
+            return true;
+        else
+            return false;
     }
     /**
      * Send data to specific API endpoint
@@ -91,16 +96,24 @@
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             'Content-Type: application/json'
-         ));
+        ));
 
-        $response = curl_exec($ch);
+        // echo $GLOBALS['api_url'] . $endpoint;
+        // print_r($data);
 
-        if(!$response)
+        $response = json_decode(curl_exec($ch), true);
+        $httpCode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
+
+        curl_close($ch);
+
+        if($httpCode == '404')
         {
             die('Connection to API failed');
         }
-        curl_close($ch);
-
-        return json_decode($response, true);
+        else
+        {
+            return ['code' => $httpCode, 'data' => $response];
+        }
+        
     }
 ?>
