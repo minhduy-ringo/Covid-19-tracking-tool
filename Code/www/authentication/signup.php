@@ -20,6 +20,11 @@
 <body">
     <div class="signup-wrapper">
         <div class="corral">
+            <div class="signup-menu-bar">
+                <div class="menu-bar-element" id="login-button">
+                    <a class="btn btn-outline-primary" href="/www/index.php/">Đăng nhập</a>
+                </div>
+            </div>
             <div class="signup-content">
                 <div id="error-notifications"">
                     <div class="form-error" id="signup-email-error">
@@ -59,7 +64,6 @@
                         <small id="emailBlank" class="form-test" style="color: red; display: none;">*Email trống</small>
                     </div>
                     <div class="form-group">
-                        <label for="password">Mật khẩu</label>
                         <div id="password-field-wrapper" class="form-control">
                             <div class="row">
                                 <input type="password" class="col-10" id="inputPassword" name="password" style="border: 0;" placeholder="Mật khẩu">
