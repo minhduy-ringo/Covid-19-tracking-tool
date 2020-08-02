@@ -42,9 +42,16 @@ html * {
     position: relative;
 }
 .signup-content {
-    margin: 80px auto 0;
+    margin: 0;
     padding:  42px 42px 36px;
     overflow: hidden;
+}
+.signup-menu-bar {
+    position: relative;
+    height: 30px;
+    margin-top: 40px;
+    margin-left: 41px;
+    margin-right: 41px;
 }
 .form-control {
     height: 52px !important;
@@ -73,4 +80,88 @@ html * {
 }
 #login-info-wrong .fas {
     padding: 15px 0 15px 15px;
+}
+#login-button {
+    position: absolute;
+    right: 0;
+}
+.menu-bar {
+    padding: 12px;
+    background-color: #052093;
+    color: white;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    overflow: hidden;
+    margin-left: 0px !important;
+}
+.menu-bar a {
+    color: white;
+}.menu-bar a:hover {
+    color: white;
+    text-decoration: none;
+}
+#home-button {
+    text-align: end;
+}   
+#home-button a {
+    width: 10px;
+    height: 10px;
+}
+#user-field {
+    font-size: 16px;
+}
+.container-fluid {
+    margin-top: 52px !important;
+    display: inline-block;
+    width: fit-content !important;
+}
+.table-content {
+    margin-left: 10px;
+    margin-right: 10px;
+    display: inline-block;
+}
+.table-content table {
+    border-collapse: collapse;
+    border: 2px solid rgb(200, 200, 200);
+}
+.table-content table td,th {
+    border: 1px solid rgb(190, 190, 190);
+    padding: 8px;
+}
+.table-content table th {
+    background-color: gainsboro;
+}
+.sort {
+    text-align: center;
+    font-size: small;
+}
+.alg-left {
+    text-align: left;
+}
+.alg-right {
+    text-align: right;
+}
+#country-name {
+    font-weight: bold;
+}
+.table-control {
+    margin-bottom: 3rem;
+}
+.table-control p {
+    text-align: center;
+    font-size: xx-large;
+    margin-top: 3rem;
+
+}
+.country-list .nav-item {
+    padding-right: 15px;
+}
+.country-list .nav-link {
+    background-color: aqua;
+    width: 100px;
+    text-align: center;
+}
+#world-table {
+    display: none;
 }
