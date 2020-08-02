@@ -3,14 +3,10 @@
 
     httpsRedirect();
 
-    if(isset($_COOKIE['sessionId']))
+    if(checkSession())
     {
-        $result = checkSession($_COOKIE['sessionId']);
-        if($result)
-        {
-            $redirect = $GLOBALS['domain_url'] . "home.php";
-            header("Location: $redirect");
-        }
+        $redirect = $GLOBALS['domain_url'] . "home.php";
+        header("Location: $redirect");
     }
 ?>
 
@@ -23,7 +19,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="/www/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/e5407c478d.js" crossorigin="anonymous"></script>
 </head>
@@ -61,7 +57,7 @@
                     <div class="login-signup-separator">
                         <span class="text-in-separator">Hoặc</span>
                     </div>
-                    <a role="button" href="authentication/signup.php" class="btn btn-secondary" id="create-account" style="width: 100%;">Tạo tài khoản</a>
+                    <a role="button" href="/www/authentication/signup.php" class="btn btn-secondary" id="create-account" style="width: 100%;">Tạo tài khoản</a>
                 </div>
             </div>
         </div>
