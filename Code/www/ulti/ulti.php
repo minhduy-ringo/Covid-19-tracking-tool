@@ -45,16 +45,18 @@
         unset($_SESSION['new_session_id']);
     }
     /**
-     * 
+     * Check if user has cookie that contain session id and whether session id are valid
      */
-    function checkSession($sessionId)
+    function checkSession()
     {
-        $response = callApi('GET', 'session', ['sessionid' => $sessionId]);
-
-        if($response['code'] == '200')
-            return true;
-        else
-            return false;
+        if(isset($_COOKIE['sessionId']))
+        {
+            $response = callApi('GET', 'session', ['sessionid' => $_COOKIE['sessionId']]);
+            if($response['code'] == '200')
+                return true;
+            else
+                return false;
+        }
     }
     /**
      * Send data to specific API endpoint
