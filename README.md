@@ -8,6 +8,6 @@ Develop a tool to track and register patient or potential COVID-19 carrier.
 * PHP
 
 # Folder structure
-- api       RESTapi to communicate with database
-- crawler   scrapy python project to crawl corona's infomations from worldometer
-- www       PHP web server
+- #api       RESTapi to communicate with database
+- #crawler   scrapy python project to crawl corona's infomations from worldometer
+- #www       PHP web server
