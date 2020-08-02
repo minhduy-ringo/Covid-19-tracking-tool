@@ -123,7 +123,7 @@ function signupSubmit()
         method: "POST",
         statusCode: {
             200: function(result) {
-                console.log('success');
+                window.location.href = domain_url + "signup-success";
             },
             400: function(result) {
                 var error = result['responseJSON'];
